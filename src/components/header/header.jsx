@@ -34,18 +34,32 @@ const LoggedOutView = (props) => {
 
         <HeaderLink
           isActive={
-            props.location === "/login" || props.location === "/register"
+            props.location === "/login"
           }
         >
           <img
             src={
-              props.location === "/login" || props.location === "/register"
+              props.location === "/login"
                 ? loginIconActive
                 : loginIcon
             }
-            alt="логин"
+            alt="signin"
           />
           <Link to="/login">Войти</Link>
+        </HeaderLink>
+        <HeaderLink
+          isActive={
+            props.location === "/register"
+          }
+        >
+          <img
+            src={
+              props.location === "/register"
+              ? postIconActive : postIcon
+            }
+            alt="signup"
+          />
+          <Link to="/register">Регистрация</Link>
         </HeaderLink>
       </HeaderLinks>
     );
