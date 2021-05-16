@@ -50,14 +50,14 @@ function Login(props) {
   return (
     <LoginPage>
       <Container>
-        <ListErrors errors={errors} />
+        
         <Caption className="text text_type_main-large mt-4 mb-4">Войти</Caption>
         <LinkWrapper className="mb-5">
           <Link to="/register">
             Хотите создать аккаунт?
           </Link>        
         </LinkWrapper>
-
+        <ListErrors errors={errors} />
         <Form className="mt-1" onSubmit={submitForm(email, password)}>
 
           <CustomInput

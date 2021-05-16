@@ -1,5 +1,5 @@
-import React, {useState, useEffect} from "react";
-import PropTypes from 'prop-types';
+import React, { useState, useEffect } from "react";
+import PropTypes from "prop-types";
 import ListErrors from "../ListErrors";
 import agent from "../../agent";
 import { connect } from "react-redux";
@@ -32,50 +32,48 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 function Register(props) {
+  const { onSubmit, onUnload, errors } = props;
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-    const {onSubmit, onUnload, errors} = props;
-    const [username, setUsername] = useState('');
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+  function changeUsername(e) {
+    setUsername(e.target.value);
+  }
 
+  function changeEmail(e) {
+    setEmail(e.target.value);
+  }
 
-    function changeUsername(e) {
-        setUsername(e.target.value);
-      }
+  function changePassword(e) {
+    setPassword(e.target.value);
+  }
 
-    function changeEmail(e) {
-        setEmail(e.target.value);
-      }
-    
-      function changePassword(e) {
-        setPassword(e.target.value);
-      }
-      
+  function submitForm(username, email, password) {
+    return function (e) {
+      e.preventDefault();
+      onSubmit(username, email, password);
+    };
+  }
 
-      function submitForm(username, email, password) {
-        return function(e) {
-          e.preventDefault();
-          onSubmit(username, email, password);
-        }
-      }
-    
-      useEffect(() => {
-        return () => {
-          onUnload();
-        }
-      }, []);  
+  useEffect(() => {
+    return () => {
+      onUnload();
+    };
+  }, []);
 
   return (
     <RegisterPage>
       <Container>
-        <ListErrors errors={errors} />
-        <Caption className="text text_type_main-large mt-4 mb-4">Зарегистрироваться</Caption>
+        <Caption className="text text_type_main-large mt-4 mb-4">
+          Зарегистрироваться
+        </Caption>
         <LinkWrapper className="mb-5">
           <Link to="/login">Уже есть аккаунт?</Link>
         </LinkWrapper>
-
+        <ListErrors errors={errors} />
         <Form className="mt-1" onSubmit={submitForm(username, email, password)}>
-        <CustomInput
+          <CustomInput
             className="mb-6"
             placeholder="Имя пользователя"
             size="default"
@@ -113,12 +111,10 @@ function Register(props) {
   );
 }
 
-
 Register.propTypes = {
-    onSubmit: PropTypes.func,
-    onUnload: PropTypes.func,
-    errors: PropTypes.object
-  };
-  
+  onSubmit: PropTypes.func,
+  onUnload: PropTypes.func,
+  errors: PropTypes.object,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Register);
