@@ -1,4 +1,5 @@
 import React from "react";
+import { connect } from 'react-redux';
 import { Link } from "react-router-dom";
 import {
   HeaderNavbar,
@@ -12,6 +13,7 @@ import { useLocation } from "react-router-dom";
 import PropTypes from "prop-types";
 import homeIcon from "../../images/header/home.svg";
 import homeIconActive from "../../images/header/home_active.svg";
+import logoutIcon from "../../images/header/logout.svg";
 import loginIcon from "../../images/header/login.svg";
 import loginIconActive from "../../images/header/login_active.svg";
 import postIcon from "../../images/header/post.svg";
@@ -19,6 +21,14 @@ import postIconActive from "../../images/header/post_active.svg";
 import settingsIcon from "../../images/header/settings.svg";
 import settingsIconActive from "../../images/header/settings_active.svg";
 import avatar from "../../images/header/avatar.svg";
+
+import {
+  LOGOUT
+} from '../../constants/actionTypes';
+
+const mapDispatchToProps = dispatch => ({
+  onClickLogout: () => dispatch({ type: LOGOUT }),  
+});
 
 const LoggedOutView = (props) => {
   if (!props.currentUser) {
@@ -112,6 +122,13 @@ const LoggedInView = (props) => {
             {props.currentUser.username}{" "}
           </Link>
         </HeaderLink>
+        <HeaderLink isActive={false}>
+          <img
+            src={logoutIcon}
+            alt="Выйти"
+          />
+          <Link onClick={props.onClickLogout}> Выйти </Link>
+        </HeaderLink>
       </HeaderLinks>
     );
   }
@@ -122,6 +139,7 @@ const LoggedInView = (props) => {
 LoggedInView.propTypes = {
   location: PropTypes.string,
   currentUser: PropTypes.object,
+  onClickLogout: PropTypes.func
 };
 
 function Header(props) {
@@ -135,8 +153,13 @@ function Header(props) {
           </a>
         </Logo>        
 
-        <LoggedOutView location={location} currentUser={props.currentUser} />
-        <LoggedInView location={location} currentUser={props.currentUser} />
+        <LoggedOutView
+          location={location}
+          currentUser={props.currentUser} />
+        <LoggedInView
+          location={location}
+          currentUser={props.currentUser}
+          onClickLogout={props.onClickLogout}/>
       </HeaderContainer>
     </HeaderNavbar>
   );
@@ -144,6 +167,7 @@ function Header(props) {
 
 Header.propTypes = {
   currentUser: PropTypes.object,
+  onClickLogout: PropTypes.func
 };
 
-export default Header;
+export default connect(null, mapDispatchToProps)(Header);
