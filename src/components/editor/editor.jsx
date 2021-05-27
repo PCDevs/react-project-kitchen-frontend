@@ -71,7 +71,7 @@ function Editor(props) {
   const submitForm = ev => {    
     ev.preventDefault();
     if (ev.target.tagName === "SPAN") {      
-      const tags = tagInput.split(',').filter(tag => tag != "");
+      const tags = tagInput.split(',').filter(tag => tag !== "");
       const article = {
         title,
         description,
