@@ -127,7 +127,7 @@ const LoggedInView = (props) => {
             src={logoutIcon}
             alt="Выйти"
           />
-          <Link onClick={props.onClickLogout}> Выйти </Link>
+          <Link to='#' onClick={props.onClickLogout}> Выйти </Link>
         </HeaderLink>
       </HeaderLinks>
     );
