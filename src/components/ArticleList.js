@@ -1,5 +1,5 @@
 import ArticlePreview from './ArticlePreview';
-import ListPagination from './ListPagination';
+import ListPagination from './pagination';
 import React from 'react';
 
 const ArticleList = props => {
