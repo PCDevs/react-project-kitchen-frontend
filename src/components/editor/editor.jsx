@@ -1,6 +1,6 @@
 import React, {useState, useEffect, useRef} from 'react';
 import PropTypes from 'prop-types';
-import ListErrors from '../ListErrors';
+import ListErrors from '../errors/ListErrors';
 import agent from '../../agent';
 import { connect } from 'react-redux';
 import {
