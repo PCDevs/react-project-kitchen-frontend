@@ -10,7 +10,7 @@ import Login from '../components/login';
 import Profile from '../components/Profile';
 import ProfileFavorites from '../components/ProfileFavorites';
 import Register from '../components/register';
-import Settings from '../components/Settings';
+import Settings from '../components/settings';
 import { store } from '../store';
 import { push } from 'react-router-redux';
 import Header from '../components/header';
