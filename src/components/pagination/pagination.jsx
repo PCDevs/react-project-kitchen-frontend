@@ -30,9 +30,7 @@ const ListPagination = (props) => {
     <nav>
       <Pagination>
         {range.map((v) => {
-          console.log(v);
-          console.log(range.length);
-          const isCurrent = v === props.currentPage;
+          const isCurrent = v === props.currentPage; 
           const onClick = (ev) => {
             ev.preventDefault();
             setPage(v);

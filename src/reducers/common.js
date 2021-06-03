@@ -19,7 +19,7 @@ import {
 } from '../constants/actionTypes';
 
 const defaultState = {
-  appName: 'Practicum Project Kitchen',
+  appName: 'Алкостопом по галактике',
   token: null,
   viewChangeCounter: 0
 };

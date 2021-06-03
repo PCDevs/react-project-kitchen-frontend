@@ -80,6 +80,7 @@ class Profile extends React.Component {
       agent.Profile.get(this.props.match.params.username),
       agent.Articles.byAuthor(this.props.match.params.username)
     ]));
+    // console.log(this.props.match)
   }
 
   componentWillUnmount() {
