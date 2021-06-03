@@ -1,4 +1,4 @@
-import Banner from './Banner';
+import Banner from '../../components/banner';
 import MainView from './MainView';
 import React from 'react';
 import Tags from './Tags';
@@ -45,16 +45,20 @@ class Home extends React.Component {
     return (
       <div className="home-page">
 
-        <Banner token={this.props.token} appName={this.props.appName} />
+        <Banner appName={this.props.appName} />
         <div className="container page">
 
-          <div className="row">
+          <div className="row" style={{maxWidth: 1108}}>
             <MainView />
 
             <div className="col-md-3">
-              <div className="sidebar">
+              <div className="p-4"
+                style={{
+                  backgroundColor: '#1C1C21',
+                  borderRadius: '20px'
+                }}>
 
-                <p>Popular Tags</p>
+                <p className="text text_type_main-default mb-4">Популярные тэги</p>
 
                 <Tags
                   tags={this.props.tags}

@@ -1,4 +1,4 @@
-import ArticleList from './ArticleList';
+import ArticleList from '../components/article-list';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import agent from '../agent';

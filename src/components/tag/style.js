@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const TagWrapper = styled.span`
   max-width: fit-content;
-  display: flex;
+  display: inline-flex;
   justify-content: space-between;
   align-items: center;
   background-color: ${(props) => props.active ? '#4C4CFF' : '#2F2F37'};
@@ -17,6 +17,7 @@ export const TagWrapper = styled.span`
         &:hover {
           box-shadow: 0px 0px 16px 8px rgba(51, 51, 255, 0.25), 0px 0px 8px 8px rgba(51, 51, 255, 0.25);
           filter: drop-shadow(0px 4px 32px rgba(51, 51, 255, 0.5));
+          background-color: #4C4CFF;
         }
         &:active {
           opacity: 0.9;	
