@@ -1,34 +1,33 @@
-import agent from '../agent';
-import React from 'react';
-import { connect } from 'react-redux';
-import { APP_LOAD, REDIRECT } from '../constants/actionTypes';
-import { Route, Switch } from 'react-router-dom';
-import Article from '../components/article';
-import Editor from '../components/editor';
-import Home from '../components/Home';
-import Login from '../components/login';
-import Profile from '../components/Profile';
-import ProfileFavorites from '../components/ProfileFavorites';
-import Register from '../components/register';
-import Settings from '../components/settings';
-import { store } from '../store';
-import { push } from 'react-router-redux';
-import Header from '../components/header';
-import GlobalFonts from '../fonts';
+import agent from "../agent";
+import React from "react";
+import { connect } from "react-redux";
+import { APP_LOAD, REDIRECT } from "../constants/actionTypes";
+import { Route, Switch } from "react-router-dom";
+import Article from "../components/article";
+import Editor from "../components/editor";
+import Home from "../components/Home";
+import Login from "../components/login";
+import { Profile, ProfileFavorites } from "../components/profile";
+import Register from "../components/register";
+import Settings from "../components/settings";
+import { store } from "../store";
+import { push } from "react-router-redux";
+import Header from "../components/header";
+import GlobalFonts from "../fonts";
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     appLoaded: state.common.appLoaded,
     appName: state.common.appName,
     currentUser: state.common.currentUser,
-    redirectTo: state.common.redirectTo
-  }};
+    redirectTo: state.common.redirectTo,
+  };
+};
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch) => ({
   onLoad: (payload, token) =>
     dispatch({ type: APP_LOAD, payload, token, skipTracking: true }),
-  onRedirect: () =>
-    dispatch({ type: REDIRECT })
+  onRedirect: () => dispatch({ type: REDIRECT }),
 });
 
 class App extends React.Component {
@@ -41,7 +40,7 @@ class App extends React.Component {
   }
 
   componentWillMount() {
-    const token = window.localStorage.getItem('jwt');
+    const token = window.localStorage.getItem("jwt");
     if (token) {
       agent.setToken(token);
     }
@@ -53,11 +52,13 @@ class App extends React.Component {
     if (this.props.appLoaded) {
       return (
         <div>
-            <GlobalFonts />
-            <Header appName={this.props.appName}
-            currentUser={this.props.currentUser} /> 
-            <Switch>
-            <Route exact path="/" component={Home}/>
+          <GlobalFonts />
+          <Header
+            appName={this.props.appName}
+            currentUser={this.props.currentUser}
+          />
+          <Switch>
+            <Route exact path="/" component={Home} />
             <Route path="/login" component={Login} />
             <Route path="/register" component={Register} />
             <Route path="/editor/:slug" component={Editor} />
@@ -66,14 +67,16 @@ class App extends React.Component {
             <Route path="/settings" component={Settings} />
             <Route path="/@:username/favorites" component={ProfileFavorites} />
             <Route path="/@:username" component={Profile} />
-            </Switch>
+          </Switch>
         </div>
       );
     }
     return (
       <div>
-         <Header appName={this.props.appName}
-            currentUser={this.props.currentUser} /> 
+        <Header
+          appName={this.props.appName}
+          currentUser={this.props.currentUser}
+        />
       </div>
     );
   }
