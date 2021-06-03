@@ -48,7 +48,7 @@ function Profile(props) {
     return () => {
       props.onUnload();
     };
-  }, []);
+  }, [props.match.params.username]);
 
   const profile = props.profile;
   if (!profile) {
