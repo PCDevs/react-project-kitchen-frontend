@@ -27,18 +27,19 @@ const Tab = styled.li`
   }
 `;
 
-const renderTabs = (props) => {
+const Tabs = (props) => {
   const { path } = useRouteMatch();
+  const isUser = props.currentUser.username === props.profile.username;
   return (
     <TabList>
       <Tab isActive={path === "/@:username"}>
-        <Link to={`/@${props.profile.username}`}>Ваши посты</Link>
+        <Link to={`/@${props.profile.username}`}>{isUser ? `Ваши посты` : `Посты ${props.profile.username}`}</Link>
       </Tab>
-      <Tab isActive={path === "/@:username/favorites"}>
+      {isUser && <Tab isActive={path === "/@:username/favorites"}>
         <Link to={`/@${props.profile.username}/favorites`}>Любимые посты</Link>
-      </Tab>
+      </Tab>}
     </TabList>
   );
 };
 
-export default renderTabs;
+export default Tabs;

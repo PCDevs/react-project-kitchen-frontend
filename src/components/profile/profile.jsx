@@ -10,7 +10,7 @@ import {
   PROFILE_PAGE_UNLOADED,
 } from "../../constants/actionTypes";
 import FollowUserButton from "../profile-components/FollowUserButton";
-import renderTabs from "../profile-components/renderTabs";
+import Tabs from "../profile-components/renderTabs";
 import EditProfileSettings from "../profile-components/EditProfileSettings";
 import { UserInfo, UserArticles, ProfileContainer } from "./styles";
 
@@ -81,7 +81,7 @@ function Profile(props) {
         />
       </UserInfo>
       <UserArticles>
-        {renderTabs(props)}
+        <Tabs {...props} currentUser={props.currentUser} />
         <ArticleList
           pager={props.pager}
           articles={props.articles}
