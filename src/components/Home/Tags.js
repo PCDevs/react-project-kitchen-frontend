@@ -1,5 +1,6 @@
 import React from 'react';
 import agent from '../../agent';
+import Tag from '../tag';
 
 const Tags = props => {
   const tags = props.tags;
@@ -7,20 +8,10 @@ const Tags = props => {
     return (
       <div className="tag-list">
         {
-          tags.map(tag => {
-            const handleClick = ev => {
-              ev.preventDefault();
-              props.onClickTag(tag, page => agent.Articles.byTag(tag, page), agent.Articles.byTag(tag));
-            };
+          tags.map(tag => {           
 
             return (
-              <a
-                href=""
-                className="tag-default tag-pill"
-                key={tag}
-                onClick={handleClick}>
-                {tag}
-              </a>
+              <Tag key={tag} caption={tag} clickable={true} onClickTag={props.onClickTag} />              
             );
           })
         }

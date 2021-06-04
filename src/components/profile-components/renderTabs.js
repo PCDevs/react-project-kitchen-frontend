@@ -29,7 +29,7 @@ const Tab = styled.li`
 
 const Tabs = (props) => {
   const { path } = useRouteMatch();
-  const isUser = props.currentUser.username === props.profile.username;
+  const isUser = props.currentUser && props.currentUser.username === props.profile.username;
   return (
     <TabList>
       <Tab isActive={path === "/@:username"}>

@@ -5,6 +5,10 @@ export const HeaderNavbar = styled.nav`
   margin: 0 auto;
   display: flex;
   background-color: #1c1c21;
+  position: fixed;
+  top: 0;
+  z-index: 10;
+  width: 100%;
 `;
 
 export const HeaderContainer = styled.div`

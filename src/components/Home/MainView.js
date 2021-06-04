@@ -1,8 +1,36 @@
-import ArticleList from '../ArticleList';
+import ArticleList from '../article-list';
 import React from 'react';
 import agent from '../../agent';
 import { connect } from 'react-redux';
 import { CHANGE_TAB } from '../../constants/actionTypes';
+import styled from "styled-components";
+
+const Tab = styled.li`
+  padding: 0 24px 12px 24px;
+  cursor: pointer;
+  ${({ isActive }) => {
+    return isActive && ` border-bottom: 3px solid rgba(76, 76, 255, 1);`;
+  }}
+
+  & > a {
+    color: #f2f2f3;
+    font-family: JetBrains Mono;
+    font-size: 16px;
+    line-height: 24px;
+    text-decoration: none;
+  }
+  & > a:hover {
+    text-decoration: none;
+  }
+`;
+
+const TabList = styled.ul`
+  list-style: none;
+  display: flex;
+  margin: 32px auto 0 auto;
+  padding: 0;
+  border-bottom: 1px solid rgba(242, 242, 243, 0.4);
+`;
 
 const YourFeedTab = props => {
   if (props.token) {
@@ -12,13 +40,12 @@ const YourFeedTab = props => {
     }
 
     return (
-      <li className="nav-item">
-        <a  href=""
-            className={ props.tab === 'feed' ? 'nav-link active' : 'nav-link' }
-            onClick={clickHandler}>
-          Your Feed
+      <Tab isActive={props.tab === 'feed'}
+      onClick={clickHandler}>
+        <a  href="">
+          Ваша лента
         </a>
-      </li>
+      </Tab>
     );
   }
   return null;
@@ -30,14 +57,13 @@ const GlobalFeedTab = props => {
     props.onTabClick('all', agent.Articles.all, agent.Articles.all());
   };
   return (
-    <li className="nav-item">
+    <Tab isActive={props.tab === 'all'}
+    onClick={clickHandler}>
       <a
-        href=""
-        className={ props.tab === 'all' ? 'nav-link active' : 'nav-link' }
-        onClick={clickHandler}>
-        Global Feed
+        href="">
+        Лента
       </a>
-    </li>
+    </Tab>
   );
 };
 
@@ -47,11 +73,11 @@ const TagFilterTab = props => {
   }
 
   return (
-    <li className="nav-item">
+    <Tab isActive={true}>
       <a href="" className="nav-link active">
         <i className="ion-pound"></i> {props.tag}
       </a>
-    </li>
+    </Tab>
   );
 };
 
@@ -67,9 +93,9 @@ const mapDispatchToProps = dispatch => ({
 
 const MainView = props => {
   return (
-    <div className="col-md-9">
+    <div className="col-md-9 pt-4">
       <div className="feed-toggle">
-        <ul className="nav nav-pills outline-active">
+        <TabList>
 
           <YourFeedTab
             token={props.token}
@@ -80,7 +106,7 @@ const MainView = props => {
 
           <TagFilterTab tag={props.tag} />
 
-        </ul>
+        </TabList>
       </div>
 
       <ArticleList

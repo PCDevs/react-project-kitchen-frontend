@@ -56,6 +56,7 @@ function Article({
       
       <Container>
         <ArticleMeta
+          underline
           article={article}
           canModify={canModify} />
         <Title className="text text_type_main-large mt-4 mb-4">{article.title}</Title>

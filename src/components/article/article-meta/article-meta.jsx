@@ -4,11 +4,11 @@ import ArticleActions from '../article-actions';
 import {ArticleMetaWrapper} from './style';
 import UserInfo from '../../user-info';
 
-const ArticleMeta = ({article, canModify}) => {
+const ArticleMeta = ({article, canModify, underline, style}) => {
   const {author, createdAt} = article;
   const {image, username} = author;
   return (
-    <ArticleMetaWrapper className="pt-8 pb-8">
+    <ArticleMetaWrapper className="pt-8 pb-8" style={style} underline={underline}>
       <UserInfo username={username} image={image} createdAt={createdAt}/>
       <ArticleActions canModify={canModify} article={article} />
     </ArticleMetaWrapper>
@@ -33,7 +33,9 @@ ArticleMeta.propTypes = {
     tagList: PropTypes.arrayOf(PropTypes.string),
     title: PropTypes.string,
     updatedAt: PropTypes.string
-  })
+  }),
+  underline: PropTypes.bool,
+  style: PropTypes.any
 };
 
 export default ArticleMeta;
