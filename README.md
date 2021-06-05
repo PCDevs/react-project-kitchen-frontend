@@ -16,7 +16,7 @@
 
 ## Адрес ресурса
 
-`hhtps://herewillbeaddress.com`
+`hhtps://pcdevs.space`
 
 ---
 
