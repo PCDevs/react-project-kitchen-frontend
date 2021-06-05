@@ -50,8 +50,6 @@
 
 Команда PCDevs: https://github.com/PCDevs
 + Егор 
-+ Ася
-+ Михаил
 + Илья 
 
 ---
