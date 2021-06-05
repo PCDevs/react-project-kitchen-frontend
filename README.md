@@ -16,7 +16,7 @@
 
 ## Адрес ресурса
 
-`hhtps://pcdevs.space`
+[http://pcdevs.space](http://pcdevs.space)
 
 ---
 
